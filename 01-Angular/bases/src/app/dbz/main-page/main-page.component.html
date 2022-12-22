@@ -1,49 +1,15 @@
+<!-- parentesis () es para emitir o escuchar eventos -->
+    <!-- llaves cuadradas [] es para establecer propiedades al objeto -->
+    <!-- [()] Emite y recibe eventos o propiedades al mismo tiempo, two way data binding -->
 <h1>Dragon ball Z</h1>
 <hr>
 
 <div class="row">
     <div class="col">
-        <h3>Personajes:</h3>
-        <hr>
-        <ul>
-            <li>Krillin - 700</li>
-            <li>Goku - 12000</li>
-            <li>Veguetta - 8500</li>
-
-        </ul>
+        <app-personajes [personajes]="personajes"></app-personajes>
+         <!-- Los pipes | sirven paratransformar visualmente la información -->
     </div>
 
-    <!-- parentesis () es para emitir o escuchar eventos -->
-    <!-- llaves cuadradas [] es para establecer propiedades al objeto -->
-    <!-- [()] Emite y recibe eventos o propiedades al mismo tiempo, two way data binding -->
-    <div class="col">
-        <h3>Agregar</h3>
-        <hr>
-        <form (ngSubmit)="agregar()"> 
-
-            <!-- <input 
-                type="text" 
-                placeholder="Nombre"
-                [value]="nuevo.nombre" 
-                (input)="cambiarNombre($event)"
-                Manera de hacerlo sin ngModel
-            /> -->
-                <!-- Forma de hacerlo con el ngModel y el [()] -->
-
-            <input 
-                type="text" 
-                placeholder="Nombre"
-                name="nombre"
-                [(ngModel)]="nuevo.nombre"
-            />
-
-            <input 
-                type="number" 
-                placeholder="Poder"
-                name="poder"
-                [(ngModel)]="nuevo.poder"
-            />
-            <button type="submit">Agregar</button>
-        </form>
+    <div class="col"><app-agregar (onNuevoPersonaje)="agregarNuevoPersonaje($event)" [nuevo]="nuevo"></app-agregar>
     </div>
 </div>

@@ -1,9 +1,5 @@
 import { Component } from '@angular/core';
-
-interface Personaje{
-  nombre:string;
-  poder:number;
-}
+import { Personaje } from '../interfaces/dbz.interface';
 
 @Component({
   selector: 'app-main-page',
@@ -12,26 +8,21 @@ interface Personaje{
 })
 export class MainPageComponent {
 
-  //Manera sin framework de evitar que se haga el posteo al hacer click en el botón con submit
-  // agregar(event:any){
-  //   event.preventDefault()
-  //   console.log('hey')
-  // }
 
-  //Forma de manejar con angular sin agregar preventDefault
-  //Utilizando un ngSubmit en el template e importando el FormsModule en el Modulo.
-  agregar(){
-      console.log(this.nuevo)
-    }
-
-  //Método innecesario si se utiliza el ngModel junto con el [()] two way binding
-  // cambiarNombre(event:any){
-  //   console.log(event.target.value)
-  // }
+    personajes: Personaje[] = [
+      {nombre: 'Veguetta', poder:50000},
+      {nombre:'Mr Satan', poder:100}
+    ]
 
     nuevo: Personaje = {
-      nombre:'Trunks',
-      poder:10000
+      nombre:'Yoel',
+      poder:500
+    }
+
+    agregarNuevoPersonaje(argumento:Personaje){
+      console.log('Main Page Component');
+      console.log(argumento);
+      this.personajes.push(argumento)
     }
 
 }
