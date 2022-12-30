@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { SearchGIFResponse, Gif } from '../interfaces/gif.interface';
 
 @Injectable({
@@ -9,6 +9,7 @@ export class GifsService {
 
   private apiKey:string = 'oYJzrgAtZVlHAMA43fWJJ2OBqOr4K8AN'
   private _historial: string[] = [];
+  private SERVICIO_URL: string = 'https://api.giphy.com/v1/gifs';
 
   //TODO: Cambiar any por su tipo
   public resultados:Gif[] =[]
@@ -45,10 +46,16 @@ export class GifsService {
 
     }
 
+    const params = new HttpParams()
+      .set('api_key', this.apiKey)
+      .set('limit', "10")
+      .set('q', query);
 
-    this.http.get<SearchGIFResponse>(`https://api.giphy.com/v1/gifs/search?api_key=oYJzrgAtZVlHAMA43fWJJ2OBqOr4K8AN&q=${query}&limit=10`)
+      console.log(params.toString());
+
+
+    this.http.get<SearchGIFResponse>(`${this.SERVICIO_URL}/search?${params}`)
       .subscribe((resp) =>{ //El subscribe se ejecuta cuando tengamos la resolución del get
-        console.log(resp.data);
         this.resultados = resp.data
       }) 
 
