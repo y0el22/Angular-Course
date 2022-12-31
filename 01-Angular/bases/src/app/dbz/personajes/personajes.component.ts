@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Personaje } from '../interfaces/dbz.interface';
+import { DbzServices } from '../services/dbz.service';
 
 
 @Component({
@@ -9,6 +10,10 @@ import { Personaje } from '../interfaces/dbz.interface';
 })
 
 export class PersonajesComponent {
+
+  constructor(private dbzService:DbzServices){
+
+  }
 
    //Manera sin framework de evitar que se haga el posteo al hacer click en el botón con submit
   // agregar(event:any){
@@ -25,7 +30,12 @@ export class PersonajesComponent {
   //   console.log(event.target.value)
   // }
 
-  @Input() //Significa que los personajes van a venir del componente padre el parametro que se le pasa es opcional y es el nombre con el que queremos que sea conocido al usarlo
-  personajes: Personaje[] = []
+  //@Input() personajes: Personaje[] = [] Significa que los personajes van a venir del componente padre el parametro que se le pasa es opcional y es el nombre con el que queremos que sea conocido al usarlo
+  
+  get personajes(){
+    return this.dbzService.personajes
+  }
+
+
 
 }

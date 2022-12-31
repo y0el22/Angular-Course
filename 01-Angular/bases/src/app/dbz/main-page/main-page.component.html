@@ -6,10 +6,10 @@
 
 <div class="row">
     <div class="col">
-        <app-personajes [personajes]="personajes"></app-personajes>
+        <app-personajes ></app-personajes>
          <!-- Los pipes | sirven paratransformar visualmente la información -->
     </div>
 
-    <div class="col"><app-agregar (onNuevoPersonaje)="agregarNuevoPersonaje($event)" [nuevo]="nuevo"></app-agregar>
+    <div class="col"><app-agregar [nuevo]="nuevo"></app-agregar>
     </div>
 </div>

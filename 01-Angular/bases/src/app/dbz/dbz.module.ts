@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { MainPageComponent } from './main-page/main-page.component';
 import { PersonajesComponent } from './personajes/personajes.component';
 import { AgregarComponent } from './agregar/agregar.component';
+import { DbzServices } from './services/dbz.service';
 
 
 @NgModule({
@@ -16,6 +17,11 @@ import { AgregarComponent } from './agregar/agregar.component';
     CommonModule,
     FormsModule //Modulo para trabajar con formularios esta este y el de formularios reactivos
   ],
-  exports:[MainPageComponent]
+  exports:[
+    MainPageComponent
+  ],
+  providers:[
+    DbzServices
+  ]
 })
 export class DbzModule { }
