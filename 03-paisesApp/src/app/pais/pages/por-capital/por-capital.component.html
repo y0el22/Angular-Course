@@ -1,3 +1,21 @@
-<h2>Buscar Capital</h2>
+<h2 class="animate__animated animate__fadeIn">Por Capital</h2>
 <hr>
-<p>por-capital works!</p>
+
+<div class="row animate__animated animate__fadeIn">
+    <div class="col">
+        <app-pais-input (onEnter)="buscar($event)" placeholder="Buscar Capital..."></app-pais-input>
+    </div>
+</div>
+
+<hr>
+
+<div *ngIf="hayError" class="alert alert-danger">
+    No se encontró nada con el término {{termino}}
+</div>
+
+<div class="row animate__animated animate__fadeIn" *ngIf="paises.length > 0">
+    <div class="col">
+        
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>
