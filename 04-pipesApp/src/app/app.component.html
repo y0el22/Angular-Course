@@ -1,0 +1,17 @@
+
+<div>
+    <h2>{{nombre}}</h2>
+    <h3>Valor: {{valor | number}}</h3>
+    <h4>Json: {{obj | json}}</h4>
+</div>
+
+<!-- <button pButton type="button" label="Mostrar" ></button> -->
+<!-- <p-button label="Click" ></p-button> -->
+<!-- <p-button class="p-button-help" label="Submit" ></p-button> -->
+
+<button pButton pRipple type="button" label="Mostrar" class="p-button-help" icon="pi pi-check" iconPos="right" (click)="mostrar()"></button>
+<p-card [header]="nombre |titlecase" subheader="Mi subheader">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed 
+    consequuntur error repudiandae numquam deserunt quisquam repellat libero 
+    asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque quas!
+</p-card>
