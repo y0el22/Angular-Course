@@ -1,0 +1,67 @@
+<div class="text-layout">
+    <h2>Pipes no tan comunes:</h2>
+    <p>
+        Pipes incluidos en Angular en el Commom Module.
+    </p>
+</div>
+
+<div class="grid">
+    <div class="col md:col-6">
+        <p-fieldset legend="i18nSelect Pipe" [toggleable]="true">
+            <p>Saludos, {{nombre}} es un placer
+                {{genero | i18nSelect:invitacionMapa}}
+                a nuestro evento.
+            </p>
+            <button pButton pRipple type="button" label="Cambiar persona" class="p-button-help" (click)="cambiarCliente()"></button>
+        </p-fieldset>
+    </div>
+    <div class="col md:col-6">
+        <p-fieldset legend="i18nPlural Pipe" [toggleable]="true">
+            <p>
+                Actualmente {{clientes.length |i18nPlural:clientesMapa}}
+            </p>
+            <button pButton pRipple type="button" label="Borrar cliente" class="p-button-help" (click)="borrarCliente()"></button>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="JSON Pipe" [toggleable]="true">
+          <pre>{{heroes | json}}</pre>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="slice Pipe" [toggleable]="true">
+            <b>Original</b>
+            <pre>{{clientes}}</pre>
+
+            <b>slice:0:2</b> <small> no incluye la última posición que se le pasa</small>
+            <pre>{{clientes | slice:0:2}}</pre>
+
+            <b>slice:1:2</b> si incluye la primera posición que se le pasa
+            <pre>{{clientes | slice:1:2}}</pre>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="keyValue Pipe" [toggleable]="true">
+          <ul>
+            <li *ngFor="let item of persona |keyvalue">
+                <b>{{item.key}}</b>:{{item.value}}
+            </li>
+          </ul>
+        </p-fieldset>
+    </div>
+
+    <div class="col md:col-6">
+        <p-fieldset legend="Async Pipe" [toggleable]="true">
+            <pre><small>El pipe async se suscribe al observable y cada emisión es lo que muestra funciona también para promesas</small></pre>
+
+            <pre *ngIf="!(miObservable | async)">Resolviendo observable...</pre>
+            <pre>{{miObservable | async}}</pre>
+
+            <pre *ngIf="!(valorPromesa | async)">Resolviendo promesa...</pre>
+            <pre>{{valorPromesa | async}}</pre>
+        </p-fieldset>
+    </div>
+</div>
